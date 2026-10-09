@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "beamng-lite"
+version = "1.0.0"
+description = "Мини soft-body автосимулятор в духе BeamNG.Drive (Python + PyOpenGL)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "beamNG.Lite contributors" }]
+keywords = ["simulation", "soft-body", "racing", "beamng", "opengl", "pygame"]
+classifiers = [
+    "Environment :: X11 Applications",
+    "Intended Audience :: End Users/Desktop",
+    "Topic :: Games/Entertainment :: Simulation",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "pygame>=2.5",
+    "PyOpenGL>=3.1.7",
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+accel = ["PyOpenGL_accelerate"]
+test = ["pytest"]
+
+[project.scripts]
+beamng-lite = "beamng_lite.main:main"
+
+[tool.setuptools]
+packages = ["beamng_lite"]
+
+[tool.setuptools.package-data]
+beamng_lite = ["vehicles/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
